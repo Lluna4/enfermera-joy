@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 import pymongo
-
+import praw
+import random
 import discord
 from discord.utils import get
 from discord.ext import commands
@@ -58,6 +59,22 @@ async def on_message(message):
             
             except Exception:
                 await message.channel.send("Esta persona no ha puesto sus gamertags :(")
+    if "p" in message.content or "P" in message.content:
+        if message.author.id == 1001953702476783706:
+            pass
+        else:
+            print("a")
+            reddit = praw.Reddit(client_id="qne5ONyUa25dvmW59ZdZWA",
+                client_secret="HJ1dmBFqLzKL15rdRtZth6Au5H7u1Q",
+                user_agent="Rule34_discbot")
+
+            subreddit = reddit.subreddit("rule34LoL")
+            a = []
+            for submission in reddit.subreddit("rule34LoL").hot(limit=50):
+                a.append(submission)
+            #print(a)
+            m = random.randint(0, len(a)-1)
+            await message.channel.send(f"https://www.reddit.com/r/rule34LoL/comments/{a[m]}")
                 
 
 
