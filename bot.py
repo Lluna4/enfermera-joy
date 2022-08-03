@@ -59,7 +59,7 @@ async def on_message(message):
             
             except Exception:
                 await message.channel.send("Esta persona no ha puesto sus gamertags :(")
-    if "p" in message.content or "P" in message.content:
+    if "patas" in message.content or "PATAS" in message.content:
         if message.author.id == 1001953702476783706:
             pass
         else:
